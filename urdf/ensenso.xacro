@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot name="ensenso_camera">
+
+  <material name="Ensenso/Blue">
+    <color rgba="0.1 0.1 1.0 1.0"/>
+  </material>
+
+  <xacro:macro name="ensenso_N_Series" params="camera parent *origin margin">
+
+    <joint name="${parent}_${camera}_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}" />
+      <child link="${camera}_mounting_frame" />
+    </joint>
+
+    <link name="${camera}_mounting_frame">
+      <visual>
+        <!--origin rpy="0. 0. 0." xyz="0. 0. 0." /-->
+        <origin rpy="0. 0. ${pi}" xyz="0. 0. 0." />
+        <geometry>
+          <!--mesh filename="package://tsuzuki_sim_description/meshes/camera/ensenso/N30-602-16.stl"/-->
+          <mesh filename="package://tsuzuki_sim_description/meshes/camera/ensenso/N3x.stl"/>
+        </geometry>
+        <material name="Ensenso/Blue"/>
+      </visual>
+      <collision>
+        <!--origin rpy="0. 0. 0." xyz="0. 0. 0." /-->
+        <origin rpy="0. 0. ${pi}" xyz="0. 0. 0." />
+        <geometry>
+          <!--mesh filename="package://tsuzuki_sim_description/meshes/camera/ensenso/N30-602-16.stl"/-->
+          <mesh filename="package://tsuzuki_sim_description/meshes/camera/ensenso/N3x.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0. 0. 0." rpy="0. 0. 0." />
+        <mass value="0.65" />
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0" 
+                 iyy="0.001" iyz="0.0" izz="0.001" />
+      </inertial>
+    </link>
+
+    <!-- Projector -->
+    <joint name="${camera}_projector_joint" type="fixed">
+      <parent link="${camera}_mounting_frame"/>
+      <child link="${camera}_projector_lens_frame"/>
+      <origin xyz="0 0.00 0.05" rpy=" 0 0 0"/>
+    </joint>
+    <link name="${camera}_projector_lens_frame"/>
+
+    <!-- Left lens -->
+    <joint name="${camera}_left_lense_joint" type="fixed">
+      <parent link="${camera}_mounting_frame"/>
+      <child link="${camera}_left_lens_frame"/>
+      <origin xyz="-0.05 0.00 0.05" rpy=" 0 0 0"/>
+    </joint>
+    <link name="${camera}_left_lens_frame"/>
+
+    <!-- Right lens -->
+    <joint name="${camera}_right_lens_joint" type="fixed">
+      <parent link="${camera}_mounting_frame"/>
+      <child link="${camera}_right_lens_frame"/>
+      <origin xyz="0.05 0.00 0.05" rpy=" 0 0 0"/>
+    </joint>
+    <link name="${camera}_right_lens_frame"/>
+
+  </xacro:macro>
+</robot>

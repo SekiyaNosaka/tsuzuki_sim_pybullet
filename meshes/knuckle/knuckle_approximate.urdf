@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<robot name="knuckle">
+  <link name="knuckle_link">
+
+    <inertial>
+      <origin xyz="0.002921 0.009235 -0.028423" rpy="0 0 0" />
+      <!--mass value="3."/-->
+      <!--inertia ixx="0.2044520160" ixy="0.0007975608" ixz="0.0065516653"
+               iyy="0.1079389849" iyz="0.0374371044" izz="0.2495596983"/-->
+      <mass value="0.488"/>
+      <inertia ixx="0.02044520160" ixy="0.00007975608" ixz="0.00065516653"
+               iyy="0.01079389849" iyz="0.00374371044" izz="0.02495596983"/>
+      <!--inertia ixx="0.002044520160" ixy="0.000007975608" ixz="0.000065516653"
+               iyy="0.001079389849" iyz="0.000374371044" izz="0.002495596983"/-->
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/knuckle/knuckle_approximate.obj" scale=".001 .001 .001"/>
+      </geometry>
+      <material name="flat_black">
+        <color rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/knuckle/knuckle_approximate.obj" scale=".001 .001 .001"/>
+      </geometry>
+    </collision>
+  </link>
+
+</robot>

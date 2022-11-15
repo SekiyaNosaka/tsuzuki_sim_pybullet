@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<robot name="knuckle">
+  <link name="knuckle_link">
+
+    <!--contact>
+      <lateral_friction value="1.0"/>
+      <inertia_scaling value="1.0"/>
+    </contact-->
+
+    <inertial>
+      <!--origin xyz="0 0 0" rpy="0 0 0"/-->
+      <origin xyz="0.002921 0.009235 -0.028423" rpy="0 0 0"/>
+      <mass value=".488"/>
+      <!--inertia ixx="1" ixy="0" ixz="0"
+               iyy="1" iyz="0" izz="1"/-->
+      <inertia ixx="0.002044520160" ixy="0.000007975608" ixz="0.000065516653"
+               iyy="0.001079389849" iyz="0.000374371044" izz="0.002495596983"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tsuzuki_sim_description/meshes/knuckle/knuckle.stl" scale=".001 .001 .001"/>
+      </geometry>
+      <!--material name="black">
+        <color rgba="0.25 0.25 0.25 0.75"/>
+        <ambient rgba="2 2 2 2"/>
+        <diffuse rgba="10 10 10 1"/>
+        <specular rgb="2 2 2 1"/>
+      </material-->
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tsuzuki_sim_description/meshes/knuckle/knuckle.stl" scale=".001 .001 .001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="knuckle_link">
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+</robot>
